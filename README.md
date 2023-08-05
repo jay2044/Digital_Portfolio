@@ -1,2 +1,3 @@
 # Digital_Portfolio
-![Alt Text](Screenshot 2023-08-05 145250.png)
+![Alt Text](Screenshot%202023-08-05%20145250.png)
+
