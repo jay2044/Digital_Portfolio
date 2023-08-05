@@ -1,2 +1,2 @@
 # Digital_Portfolio
-![Alt Text](path/to/your/image.jpg)
+![Alt Text](Screenshot 2023-08-05 145250.png)
