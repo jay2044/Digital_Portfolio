@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jaya Adithya Pavuluri</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .typing-effect {
+            opacity: 0; /* Hide content initially */
+        }
+    </style>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        class Random {
+            static generateBinary() {
+                var random = Math.random();
+                if (random > 0.5) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+            static generate(min, max) {
+                return Math.floor((Math.random() * max) + min);
+            }
+        }
+        class Binary {
+            constructor() {
+                this.value = Random.generateBinary();
+            }
+            animate(ts, leftOffset, topOffset) {
+                var div = document.createElement("div");
+                $(div).css("font-size", ts + "px");
+                $(div).css("top", (topOffset * (ts / 2)) + 80);
+                $(div).css("left", leftOffset + "px");
+                $(div).text(this.value);
+                $(div).addClass("binary");
+                $(div).hide();
+                $(".binary-container").append(div);
+                $(div).show().addClass("animated fadeIn").on(animationEnd, this.fadeInEnd);
+                return $(div).offset().top;
+            }
+            fadeInEnd(event) {
+                var $binary = $(event.currentTarget);
+                $binary.removeClass("animated fadeIn");
+                $binary.addClass("animated fadeOut").on(animationEnd, function() {
+                    $binary.remove();
+                });
+            }
+        }
+        class BinaryLine {
+            constructor(lO, tS, dS) {
+                this.leftOffset = lO;
+                this.textSize = tS;
+                this.documentSize = dS;
+            }
+            generate() {
+                var iterator = 1;
+                var size = this.length;
+                var fontSize = this.textSize;
+                var documentSize = this.documentSize;
+                var currentOffset = 0;
+                var leftOffset = this.leftOffset;
+                var interval = setInterval(function() {
+                    if (currentOffset < documentSize) {
+                        var binary = new Binary();
+                        currentOffset = binary.animate(fontSize, leftOffset, iterator);
+                        iterator++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 80);
+            }
+        }
+        class BinaryAnimation {
+            constructor() {}
+            start() {
+                setInterval(function() {
+                    new BinaryLine(Random.generate(0, $(document).width()), Random.generate($(document).width() * 0.002, $(document).width() * 0.008), $(document).height()).generate();
+                }, 200);
+                setInterval(function() {
+                    $(".binary").remove();
+                }, 30000)
+            }
+        }
+        $(document).ready(function() {
+            new BinaryAnimation().start();
+        });
+    </script>
+</head>
+
+<body>
+<div class="binary-container"></div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <span class="navbar-brand mb-0">Jaya Adithya Pavuluri</span>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="home"><a href="/">HOME</a></li>
+                <li id="projects"><a href="/projects">PROJECTS</a></li>
+                <li id="contacts"><a href="/contact">CONTACT ME</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid"> <!-- Use container-fluid for full width -->
+        <div class="row">
+            <!-- (Information) -->
+            <div class="col-md-4" id="info-section">
+                <!-- About Me Section -->
+                <section id="about-me">
+                    <h2 class="typing-effect">About Me</h2>
+                    <p class="typing-effect">Highly motivated and dedicated Computer Science freshman seeking a challenging internship opportunity in the field of computer science. Eager to apply and expand technical skills while contributing to real-world projects.</p>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education">
+                    <h2 class="typing-effect">Education</h2>
+                    <p class="typing-effect">Bachelor of Science in Computer Science, Expected 2026</p>
+                    <p class="typing-effect">Arizona State University, Tempe, AZ</p>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills">
+                    <h2 class="typing-effect">Skills</h2>
+                    <ul>
+                        <li class="typing-effect">Languages: Proficient in Java, Python, HTML, CSS, JavaScript.</li>
+                        <li class="typing-effect">Frameworks: Familiar with Node.js, Express.js, Bootstrap, PyQt5.</li>
+                        <li class="typing-effect">Other: SQL, MongoDB with Mongoose, version control using Git, GitHub. Experience in GUI development, event handling, and data management.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- (Posts) -->
+            <div class="col-md-8 scrollable-posts" id="posts-section">
+                <section id="blog-posts">
+                    <h2>Posts</h2>
+                    <% posts.reverse().forEach(function(post, index) { %>
+                        <h3>
+                            <%= post.title %>
+                        </h3>
+                        <p>
+                            <%= post.content.substring(0, 100) + " ..." %>
+                            <a href="/posts/<%= index %>">Read More</a>
+                        </p>
+                        <hr>
+                    <% }); %>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function typeText(element, text, callback) {
+                var i = 0;
+
+                function typing() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        element.style.opacity = 1; /* Show content as it's being typed */
+                        i++;
+                        setTimeout(typing, 5); /* Increase typing speed */
+                    } else {
+                        callback();
+                    }
+                }
+
+                typing();
+            }
+
+            var paragraphs = document.querySelectorAll('.typing-effect');
+            var index = 0;
+
+            function typeNextParagraph() {
+                if (index < paragraphs.length) {
+                    var paragraph = paragraphs[index];
+                    var text = paragraph.textContent;
+                    paragraph.textContent = ''; // Clear existing content
+                    typeText(paragraph, text, typeNextParagraph);
+                    index++;
+                }
+            }
+
+            typeNextParagraph();
+        });
+
+
+    </script>
+</body>
+
+</html>

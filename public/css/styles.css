@@ -1,0 +1,225 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro); /* Dark mode styles */
+body {
+    background-color: #000000;
+    overflow: hidden;
+    color: #c4c4c4; /* Futuristic text color */
+    font-size: 16px;
+    font-family: 'Courier New', monospace; /* Monospace font for a coding vibe */
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.navbar {
+    height: 80px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    letter-spacing: 2px;
+    background-color: rgba(82, 82, 82, 0.5); /* Slightly transparent background */
+    position: relative; /* Ensure z-index applies */
+    z-index: 10; /* Ensure it's above .binary-container */
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    color: #a8a8a8 !important; /* Futuristic color */
+        animation: fadeIn 2s ease;
+}
+
+.navbar-nav li a:hover {
+    color: #67f34e !important; /* Hover color */
+}
+
+.navbar-nav li a {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav li a:hover {
+    transform: scale(1.1); /* Slightly enlarges the link on hover */
+}
+
+
+.name {
+    font-weight: 400;
+    font-size: 24px; /* Increased size */
+    text-transform: uppercase; /* Uppercase transformation */
+    letter-spacing: 3px; /* Increased letter spacing */
+    color: #67f34e; /* Custom color */
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.footer-padding {
+    padding-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(82, 82, 82, 0.5); /* Slightly transparent background */
+}
+
+
+.footer p {
+    margin-top: 25px;
+    font-size: 14px; /* Increased font size */
+    color: #a8a8a8;
+}
+
+/* Additional styles for new sections */
+section {
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease;
+}
+
+h2 {
+    border-bottom: 1px solid #6a6c6b;
+    padding-bottom: 10px;
+    font-size: 20px; /* Increased font size */
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#skills {
+
+}
+
+#blog-posts {
+
+}
+
+a {
+    color: #a8a8a8; /* Futuristic color */
+
+}
+
+a:hover {
+    color: #67f34e; /* Hover color */
+}
+
+.typing-effect::after {
+    content: '|'; /* The character used for the cursor */
+    animation: blink 1s step-end infinite; /* The blinking animation */
+}
+
+@keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black; /* Or whatever color the text is */
+    }
+}
+
+
+#info-section {
+    padding: 20px; /* Extra padding */
+    border-right: 2px solid #6a6c6b; /* Right border */
+    font-size: 20px; /* Consistent font size */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Styling for the Posts section */
+#posts-section {/
+    padding: 20px; /* Extra padding */
+    font-size: 20px; /* Consistent font size */
+    height: calc(100vh - 50px); /* Set a fixed height for posts, subtracting the navbar's height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: none;
+}
+
+#posts-section::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Edge */
+}
+
+.scrollable-posts {
+  height: 80vh; /* Adjust the height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+body {
+  overflow: hidden; /* Prevent scrolling for the entire body */
+}
+
+.container-fluid, .row {
+  height: 100%;
+}
+
+.binary-container {
+  position: fixed; /* Fixed position */
+  /*top: 80px;*/
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px);
+  z-index: -1; /* Place it behind other content */
+  overflow: hidden; /* Hide overflow */
+}
+
+.binary {
+    position: absolute;
+    color: #00FF00; /* Green color, commonly used for binary animations */
+    opacity: 0.5; /* Adjusting opacity to 50% for a translucent effect */
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-animation-duration: 1s;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    text-shadow: 0 0 10px #91EDFF;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animated.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.animated.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+
+
+
+
+
